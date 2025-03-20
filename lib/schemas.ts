@@ -91,8 +91,8 @@ const InvoiceSenderSchema = z.object({
     zipCode: fieldValidators.zipCode,
     city: fieldValidators.city,
     country: fieldValidators.country,
-    email: fieldValidators.email,
-    phone: fieldValidators.phone,
+    email: fieldValidators.string.optional(),
+    phone: fieldValidators.string.optional(),
     customInputs: z.array(CustomInputSchema).optional(),
 });
 
@@ -102,8 +102,8 @@ const InvoiceReceiverSchema = z.object({
     zipCode: fieldValidators.zipCode,
     city: fieldValidators.city,
     country: fieldValidators.country,
-    email: fieldValidators.email,
-    phone: fieldValidators.phone,
+    email: fieldValidators.string.optional(),
+    phone: fieldValidators.string.optional(),
     customInputs: z.array(CustomInputSchema).optional(),
 });
 
@@ -118,7 +118,7 @@ const ItemSchema = z.object({
 const PaymentInformationSchema = z.object({
     bankName: fieldValidators.stringMin1,
     accountName: fieldValidators.stringMin1,
-    accountNumber: fieldValidators.stringMin1,
+    accountNumber: z.string().optional(),
 });
 
 const DiscountDetailsSchema = z.object({
@@ -159,7 +159,7 @@ const InvoiceDetailsSchema = z.object({
     totalAmount: fieldValidators.nonNegativeNumber,
     totalAmountInWords: fieldValidators.string,
     additionalNotes: fieldValidators.stringOptional,
-    paymentTerms: fieldValidators.stringMin1,
+    paymentTerms: z.string().optional(),
     signature: SignatureSchema.optional(),
     updatedAt: fieldValidators.stringOptional,
     pdfTemplate: z.number(),
