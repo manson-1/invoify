@@ -236,14 +236,6 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                         </p>
                     </div>
                     <div className="my-2">
-                        <p className="font-semibold text-blue-600">
-                            Payment terms:
-                        </p>
-                        <p className="font-regular text-gray-800">
-                            {details.paymentTerms}
-                        </p>
-                    </div>
-                    <div className="my-2">
                         <span className="font-semibold text-md text-gray-800">
                             Please send the payment to this address
                             <p className="text-sm">
@@ -270,6 +262,15 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                     </p>
                     <p className="block text-sm font-medium text-gray-800">
                         {sender.phone}
+                    </p>
+                </div>
+                <br></br>
+                <div className="my-2">
+                    <p className="font-semibold text-blue-600">
+                        Legal terms:
+                    </p>
+                    <p className="font-regular text-gray-800">
+                        {details.paymentTerms}
                     </p>
                 </div>
             </div>
