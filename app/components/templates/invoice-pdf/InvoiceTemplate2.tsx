@@ -98,10 +98,10 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                             Item
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            Qty
+                            Hours
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            Rate
+                            Rate/Hour
                         </div>
                         <div className="text-right text-xs font-medium text-gray-500 uppercase">
                             Amount
@@ -179,7 +179,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                         {details.taxDetails.amountType ===
                                         "amount"
                                             ? `+ ${details.taxDetails.amount} ${details.currency}`
-                                            : `+ ${details.taxDetails.amount}%`}
+                                            : `+ ${(details.taxDetails.amount / 100) * Number(details.subTotal)} ${details.currency} (${details.taxDetails.amount}%)`}
                                     </dd>
                                 </dl>
                             )}

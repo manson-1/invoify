@@ -98,7 +98,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             Item
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            Qty
+                            Hours
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
                             Rate
