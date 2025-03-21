@@ -1,5 +1,5 @@
 // Types
-import { SignatureColor, SignatureFont } from "@/types";
+import { ExportTypes } from "@/types";
 
 /**
  * Environment
@@ -16,9 +16,10 @@ export const AUTHOR_GITHUB = "https://github.com/al1abb";
 /**
  * API endpoints
  */
-export const GENERATE_PDF_API = "/api/invoice/generate";
-export const SEND_PDF_API = "/api/invoice/send";
+export const GENERATE_PDF_API = "/api/pdf/generate";
+export const SEND_PDF_API = "/api/pdf/send";
 export const EXPORT_INVOICE_API = "/api/invoice/export";
+export const INVOICE_FORM_ROUTE = "/";
 
 /**
  * External API endpoints
@@ -65,33 +66,12 @@ export const LOCALES = [
 export const DEFAULT_LOCALE = LOCALES[0].code;
 
 /**
- * Signature variables
+ * Export types
  */
-export const SIGNATURE_COLORS: SignatureColor[] = [
-    { name: "black", label: "Black", color: "rgb(0, 0, 0)" },
-    { name: "dark blue", label: "Dark Blue", color: "rgb(0, 0, 128)" },
-    {
-        name: "crimson",
-        label: "Crimson",
-        color: "#DC143C",
-    },
-];
-
-export const SIGNATURE_FONTS: SignatureFont[] = [
-    {
-        name: "Dancing Script",
-        variable: "var(--font-dancing-script)",
-    },
-    { name: "Parisienne", variable: "var(--font-parisienne)" },
-    {
-        name: "Great Vibes",
-        variable: "var(--font-great-vibes)",
-    },
-    {
-        name: "Alex Brush",
-        variable: "var(--font-alex-brush)",
-    },
-];
+export const EXPORT_TYPES = Object.entries(ExportTypes).map(([key, value]) => ({
+    name: key,
+    value: value,
+}));
 
 /**
  * Form date options
@@ -246,12 +226,7 @@ export const FORM_FILL_VALUES = {
         },
         additionalNotes: "Thank you for your business",
         paymentTerms: "Net 30",
-        signature: {
-            data: "",
-        },
-        subTotal: "850",
-        totalAmount: "850",
-        totalAmountInWords: "Eight Hundred Fifty",
+        totalAmountInWords: "Eight hundred and fifty dollars",
         pdfTemplate: 1,
     },
 };

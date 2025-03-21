@@ -4,13 +4,11 @@
 import {
     Charges,
     FormTextarea,
-    SignatureModal,
     Subheading,
 } from "@/app/components";
 
 // Contexts
 import { useTranslationContext } from "@/contexts/TranslationContext";
-import { SignatureContextProvider } from "@/contexts/SignatureContext";
 
 const InvoiceSummary = () => {
     const { _t } = useTranslationContext();
@@ -20,11 +18,6 @@ const InvoiceSummary = () => {
             <Subheading>{_t("form.steps.summary.heading")}:</Subheading>
             <div className="flex flex-wrap gap-x-5 gap-y-10">
                 <div className="flex flex-col gap-3">
-                    <SignatureContextProvider>
-                        {/* Signature dialog */}
-                        <SignatureModal />
-                    </SignatureContextProvider>
-
                     {/* Additional notes & Payment terms */}
                     <FormTextarea
                         name="details.additionalNotes"

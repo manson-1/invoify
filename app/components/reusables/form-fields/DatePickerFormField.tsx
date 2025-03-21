@@ -71,12 +71,9 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                             >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
                                                 {field.value ? (
-                                                    new Date(
-                                                        field.value
-                                                    ).toLocaleDateString(
-                                                        "en-US",
-                                                        DATE_OPTIONS
-                                                    )
+                                                    typeof field.value === 'string' ? 
+                                                    new Date(field.value).toLocaleDateString("en-US", DATE_OPTIONS) :
+                                                    field.value.toLocaleDateString("en-US", DATE_OPTIONS)
                                                 ) : (
                                                     <span>Pick a date</span>
                                                 )}
@@ -87,10 +84,10 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                         <Calendar
                                             mode="single"
                                             captionLayout="dropdown-buttons"
-                                            defaultMonth={field.value}
-                                            selected={new Date(field.value)}
-                                            onSelect={(e) => {
-                                                field.onChange(e);
+                                            defaultMonth={field.value ? (typeof field.value === 'string' ? new Date(field.value) : field.value) : undefined}
+                                            selected={field.value ? (typeof field.value === 'string' ? new Date(field.value) : field.value) : undefined}
+                                            onSelect={(date) => {
+                                                field.onChange(date);
                                                 setIsPopoverOpen(false);
                                             }}
                                             disabled={(date) =>

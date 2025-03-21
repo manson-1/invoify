@@ -42,11 +42,13 @@ const fieldValidators = {
         }),
 
     // Dates
-    date: z
-        .date()
-        .transform((date) =>
-            new Date(date).toLocaleDateString("en-US", DATE_OPTIONS)
-        ),
+    date: z.preprocess((val) => {
+        if (val instanceof Date) return val;
+        if (typeof val === 'string') return new Date(val);
+        return val;
+    }, z.date()).transform((val) => {
+        return val.toLocaleDateString("en-US", DATE_OPTIONS);
+    }),
 
     // Items
     quantity: z.coerce
@@ -127,19 +129,14 @@ const DiscountDetailsSchema = z.object({
 });
 
 const TaxDetailsSchema = z.object({
-    amount: fieldValidators.stringToNumberWithMax,
-    taxID: fieldValidators.string,
-    amountType: fieldValidators.string,
+    amount: fieldValidators.nonNegativeNumber,
+    amountType: z.enum(["amount", "percentage"]),
+    taxID: fieldValidators.stringOptional,
 });
 
 const ShippingDetailsSchema = z.object({
     cost: fieldValidators.stringToNumberWithMax,
     costType: fieldValidators.string,
-});
-
-const SignatureSchema = z.object({
-    data: fieldValidators.string,
-    fontFamily: fieldValidators.string.optional(),
 });
 
 const InvoiceDetailsSchema = z.object({
@@ -160,7 +157,6 @@ const InvoiceDetailsSchema = z.object({
     totalAmountInWords: fieldValidators.string,
     additionalNotes: fieldValidators.stringOptional,
     paymentTerms: z.string().optional(),
-    signature: SignatureSchema.optional(),
     updatedAt: fieldValidators.stringOptional,
     pdfTemplate: z.number(),
 });

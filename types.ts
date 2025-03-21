@@ -23,24 +23,6 @@ export type CurrencyDetails = {
     afterDecimal: string | null;
 };
 
-// Signature types
-export type SignatureColor = {
-    name: string;
-    label: string;
-    color: string;
-};
-
-export type SignatureFont = {
-    name: string;
-    variable: string;
-};
-
-export enum SignatureTabs {
-    DRAW = "draw",
-    TYPE = "type",
-    UPLOAD = "upload",
-}
-
 // Wizard types
 export type WizardStepType = {
     id: number;

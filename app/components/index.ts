@@ -66,18 +66,6 @@ import InvoiceExportModal from "./modals/invoice/InvoiceExportModal";
 // Custom Selectors
 import SavedInvoicesList from "./modals/invoice/components/SavedInvoicesList";
 
-// Signature
-import SignatureModal from "./modals/signature/SignatureModal";
-
-// Signature / Tabs
-import DrawSignature from "./modals/signature/tabs/DrawSignature";
-import TypeSignature from "./modals/signature/tabs/TypeSignature";
-import UploadSignature from "./modals/signature/tabs/UploadSignature";
-
-// Signature / Components
-import SignatureColorSelector from "./modals/signature/components/SignatureColorSelector";
-import SignatureFontSelector from "./modals/signature/components/SignatureFontSelector";
-
 // Alerts
 import NewInvoiceAlert from "./modals/alerts/NewInvoiceAlert";
 
@@ -135,12 +123,6 @@ export {
     InvoiceLoaderModal,
     InvoiceExportModal,
     ImportJsonButton,
-    SignatureModal,
-    DrawSignature,
-    TypeSignature,
-    UploadSignature,
-    SignatureColorSelector,
-    SignatureFontSelector,
     NewInvoiceAlert,
     DynamicInvoiceTemplate,
     InvoiceLayout,

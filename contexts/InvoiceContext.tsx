@@ -113,11 +113,18 @@ export const InvoiceContextProvider = ({
    * @param {InvoiceType} data - The form values used to generate the PDF.
    */
   const onFormSubmit = (data: InvoiceType) => {
-    console.log("VALUE");
-    console.log(data);
-
-    // Call generate pdf method
-    generatePdf(data);
+    console.log("Submitting form with data:", data);
+    console.log("Form values:", getValues());
+    
+    // Create a deep copy of the data
+    const pdfData = JSON.parse(JSON.stringify(data));
+    
+    // Remove the signature field to avoid validation errors
+    if (pdfData.details && pdfData.details.signature) {
+      delete pdfData.details.signature;
+    }
+    
+    generatePdf(pdfData);
   };
 
   /**
@@ -142,24 +149,23 @@ export const InvoiceContextProvider = ({
    */
   const generatePdf = useCallback(async (data: InvoiceType) => {
     setInvoicePdfLoading(true);
-
     try {
-      const response = await fetch(GENERATE_PDF_API, {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.blob();
-      setInvoicePdf(result);
-
-      if (result.size > 0) {
-        // Toast
-        pdfGenerationSuccess();
-      }
+        const response = await fetch(GENERATE_PDF_API, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const result = await response.blob();
+        setInvoicePdf(result);
+        if (result.size > 0) {
+            pdfGenerationSuccess();
+        }
     } catch (err) {
-      console.log(err);
+        console.error("Error generating PDF:", err);
     } finally {
-      setInvoicePdfLoading(false);
+        setInvoicePdfLoading(false);
     }
   }, []);
 
