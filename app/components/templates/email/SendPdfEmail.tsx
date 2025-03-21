@@ -29,7 +29,7 @@ export default function SendPdfEmail({ invoiceNumber }: SendPdfEmailProps) {
                 Your invoice #{invoiceNumber} is ready for download
             </Preview>
             <Tailwind>
-                <Body className="bg-gray-100">
+                <Body className="bg-gray-100 font-sans">
                     <Container>
                         <Section className="bg-white border-black-950 my-10 px-10 py-4 rounded-md">
                             <Img
@@ -38,7 +38,7 @@ export default function SendPdfEmail({ invoiceNumber }: SendPdfEmailProps) {
                                 width={200}
                                 height={120}
                             />
-                            <Heading className="leading-tight">
+                            <Heading className="leading-tight text-black">
                                 Thanks for using Invoify!
                             </Heading>
 

@@ -11,7 +11,7 @@ import {
 } from "@/lib/fonts";
 
 // Favicon
-import Favicon from "@/public/assets/favicon/favicon.ico";
+import Favicon from "@/public/assets/img/favicon.png";
 
 // Vercel Analytics
 import { Analytics } from "@vercel/analytics/react";
@@ -35,7 +35,7 @@ import { JSONLD, ROOTKEYWORDS } from "@/lib/seo";
 import { BASE_URL, GOOGLE_SC_VERIFICATION, LOCALES } from "@/lib/variables";
 
 export const metadata: Metadata = {
-    title: "Invoify | Free Invoice Generator",
+    title: "Invoices",
     description:
         "Create invoices effortlessly with Invoify, the free invoice generator. Try it now!",
     icons: [{ rel: "icon", url: Favicon.src }],
@@ -47,10 +47,6 @@ export const metadata: Metadata = {
     },
     alternates: {
         canonical: BASE_URL,
-    },
-    authors: {
-        name: "Ali Abbasov",
-        url: "https://aliabb.vercel.app",
     },
     verification: {
         google: GOOGLE_SC_VERIFICATION,

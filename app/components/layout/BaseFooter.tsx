@@ -12,13 +12,7 @@ const BaseFooter = () => {
         <footer className="container py-10">
             <p>
                 {_t("footer.developedBy")}{" "}
-                <a
-                    href={AUTHOR_GITHUB}
-                    target="_blank"
-                    style={{ textDecoration: "underline" }}
-                >
                     Ali Abbasov
-                </a>
             </p>
         </footer>
     );
